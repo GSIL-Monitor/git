@@ -16,3 +16,14 @@ git reset --hard <版本号（可以写前几位）>
 cat file_name
 
 6.要重返未来，用git reflog查看命令历史，以便确定要回到未来的哪个版本。
+
+7. 把暂存区的修改撤销掉,重新放回工作区
+git reset HEAD <file>
+eg: git reset HEAD readme.txt
+
+8. 把工作区的内容撤销掉：
+git checkout -- file
+
+9. 删除文件
+git rm file_name
+git commit -m ""

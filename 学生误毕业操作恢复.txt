@@ -41,8 +41,8 @@ where a.operate_code='GraduationFromSchool' and b.school_id='e2ohl7mjtbaat1y' an
 
 -- 卡数据恢复数据
 
-update wcc_card_pool a 
-join wcc_card_pool_log b on a.card_no = b.card_no
-join zxyab_school_ext_1019.wct_student_info c on b.old_stu_uid =c.stu_uid 
-set a.stu_uid = b.old_stu_uid, a.stu_name = b.old_stu_name,a.parent_uid = b.old_parent_uid,a.parent_name= b.old_parent_name,a.bind_status=b.old_bind_status,a.bind_time=b.old_bind_time
-where c.dept_id='eidnjzyx' and b.card_no = '8834053044'
+    update wcc_card_pool a 
+    join wcc_card_pool_log b on a.card_no = b.card_no
+    join zxyab_school_ext_1019.wct_student_info c on b.old_stu_uid =c.stu_uid 
+    set a.stu_uid = b.old_stu_uid, a.stu_name = b.old_stu_name,a.parent_uid = b.old_parent_uid,a.parent_name= b.old_parent_name,a.bind_status=b.old_bind_status,a.bind_time=b.old_bind_time
+    where c.dept_id='eidnjzyx' and b.card_no = '8834053044'

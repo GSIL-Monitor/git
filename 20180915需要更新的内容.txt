@@ -1,0 +1,9 @@
+ALTER TABLE wcc_school_user_role add COLUMN parent_master_uid varchar(36) not null default '' after login_user_uid;
+
+update wcc_school_user_role a join 
+wcc_parent_school_assign b  on a.login_user_uid = b.stu_uid and b.is_default='Y'
+set a.parent_master_uid = b.parent_master_uid;
+
+update wcc_school_user_role a join 
+wcc_parent_school_assign b  on a.login_user_uid = b.stu_uid and a.parent_master_uid=''
+set a.parent_master_uid = b.parent_master_uid;

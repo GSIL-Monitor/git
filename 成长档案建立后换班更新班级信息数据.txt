@@ -1,0 +1,5 @@
+update wct_growup_record a join 
+wct_student_info b on a.stu_uid =b.stu_uid  join 
+wct_org_school_dept c on b.dept_id=c.dept_id and b.school_id = b.school_id 
+and a.leader_template_uid = 'ed0397f9-30f4-448c-93a2-53e587f776ae'
+set a.dept_id = b.dept_id,a.dept_name = c.dept_name

@@ -1,0 +1,5 @@
+腾讯云刷卡服务器（新）  ins-ni7wwjev
+公网IP	111.231.54.178
+内网IP	10.105.47.210
+U:Administrator
+P:Evymszux1kjLJ7Un

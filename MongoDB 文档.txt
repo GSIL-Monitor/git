@@ -77,3 +77,53 @@ telnet 115.159.193.60 27017
 
 
 db.serverStatus().connections
+
+创建索引
+db.collection.createIndex(keys, options)
+语法中 Key 值为你要创建的索引字段，1 为指定按升序创建索引，如果你想按降序来创建索引指定为 -1 即可。
+eg：db.col.createIndex({"title":1})
+
+
+use zxyab_school_ext_1000;
+db.createCollection("wct_dynamic_record_000");
+db.createCollection("wct_dynamic_record_001");
+db.createCollection("wct_dynamic_record_002");
+db.createCollection("wct_dynamic_record_003");
+db.createCollection("wct_dynamic_record_004");
+db.createCollection("wct_dynamic_record_005");
+db.createCollection("wct_dynamic_record_006");
+db.createCollection("wct_dynamic_record_007");
+db.createCollection("wct_dynamic_record_008");
+db.createCollection("wct_dynamic_record_009");
+
+db.wct_dynamic_record_000.createIndex({"user_uid":1,"record_type":1,"create_time":-1},{"name":"idx_dynamic_record_type"});
+db.wct_dynamic_record_001.createIndex({"user_uid":1,"record_type":1,"create_time":-1},{"name":"idx_dynamic_record_type"});
+db.wct_dynamic_record_002.createIndex({"user_uid":1,"record_type":1,"create_time":-1},{"name":"idx_dynamic_record_type"});
+db.wct_dynamic_record_003.createIndex({"user_uid":1,"record_type":1,"create_time":-1},{"name":"idx_dynamic_record_type"});
+db.wct_dynamic_record_004.createIndex({"user_uid":1,"record_type":1,"create_time":-1},{"name":"idx_dynamic_record_type"});
+db.wct_dynamic_record_005.createIndex({"user_uid":1,"record_type":1,"create_time":-1},{"name":"idx_dynamic_record_type"});
+db.wct_dynamic_record_006.createIndex({"user_uid":1,"record_type":1,"create_time":-1},{"name":"idx_dynamic_record_type"});
+db.wct_dynamic_record_007.createIndex({"user_uid":1,"record_type":1,"create_time":-1},{"name":"idx_dynamic_record_type"});
+db.wct_dynamic_record_008.createIndex({"user_uid":1,"record_type":1,"create_time":-1},{"name":"idx_dynamic_record_type"});
+db.wct_dynamic_record_009.createIndex({"user_uid":1,"record_type":1,"create_time":-1},{"name":"idx_dynamic_record_type"});
+
+db.wct_dynamic_record_000.createIndex({"record_uid":1},{"name":"idx_dynamic_record_uid"});
+db.wct_dynamic_record_001.createIndex({"record_uid":1},{"name":"idx_dynamic_record_uid"});
+db.wct_dynamic_record_002.createIndex({"record_uid":1},{"name":"idx_dynamic_record_uid"});
+db.wct_dynamic_record_003.createIndex({"record_uid":1},{"name":"idx_dynamic_record_uid"});
+db.wct_dynamic_record_004.createIndex({"record_uid":1},{"name":"idx_dynamic_record_uid"});
+db.wct_dynamic_record_005.createIndex({"record_uid":1},{"name":"idx_dynamic_record_uid"});
+db.wct_dynamic_record_006.createIndex({"record_uid":1},{"name":"idx_dynamic_record_uid"});
+db.wct_dynamic_record_007.createIndex({"record_uid":1},{"name":"idx_dynamic_record_uid"});
+db.wct_dynamic_record_008.createIndex({"record_uid":1},{"name":"idx_dynamic_record_uid"});
+db.wct_dynamic_record_009.createIndex({"record_uid":1},{"name":"idx_dynamic_record_uid"});
+
+db.createCollection("wct_diary_comment");
+db.wct_diary_comment.createIndex({"to_user_uid":1,"create_time":-1},{"name":"index_diary_comment_to_user_uid"});
+db.wct_diary_comment.createIndex({"creator_uid":1,"diary_uid":1},{"name":"index_diary_comment_creator_uid"});
+db.wct_diary_comment.createIndex({"diary_uid":1,"comment_type":1,"create_time":-1},{"name":"index_diary_comment_diary_uid"});
+
+db.createCollection("wct_diary_media");
+db.wct_diary_media.createIndex({"diary_uid":1,"school_id":1},{"name":"index_diary_media_uid"});
+db.createCollection("wct_notify_media");
+db.wct_notify_media.createIndex({"notify_uid":1},{"name":"index_notify_media"}); 

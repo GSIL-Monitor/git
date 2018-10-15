@@ -84,6 +84,8 @@ db.collection.createIndex(keys, options)
 eg：db.col.createIndex({"title":1})
 
 
+db.wct_dynamic_record_009.update({'record_uid' : 'b9c9b1c2-0cac-4f41-b089-da7a75cce5f1'},{$set:{'start_date':'2016-03-14','end_date':'2016-03-20'}},{multi:true})
+
 use zxyab_school_ext_1000;
 db.createCollection("wct_dynamic_record_000");
 db.createCollection("wct_dynamic_record_001");
@@ -95,7 +97,10 @@ db.createCollection("wct_dynamic_record_006");
 db.createCollection("wct_dynamic_record_007");
 db.createCollection("wct_dynamic_record_008");
 db.createCollection("wct_dynamic_record_009");
-
+db.createCollection("wct_diary_comment");
+db.createCollection("wct_diary_media");
+db.createCollection("wct_notify_media");
+use zxyab_school_ext_1000;
 db.wct_dynamic_record_000.createIndex({"user_uid":1,"record_type":1,"create_time":-1},{"name":"idx_dynamic_record_type"});
 db.wct_dynamic_record_001.createIndex({"user_uid":1,"record_type":1,"create_time":-1},{"name":"idx_dynamic_record_type"});
 db.wct_dynamic_record_002.createIndex({"user_uid":1,"record_type":1,"create_time":-1},{"name":"idx_dynamic_record_type"});
@@ -118,12 +123,16 @@ db.wct_dynamic_record_007.createIndex({"record_uid":1},{"name":"idx_dynamic_reco
 db.wct_dynamic_record_008.createIndex({"record_uid":1},{"name":"idx_dynamic_record_uid"});
 db.wct_dynamic_record_009.createIndex({"record_uid":1},{"name":"idx_dynamic_record_uid"});
 
-db.createCollection("wct_diary_comment");
 db.wct_diary_comment.createIndex({"to_user_uid":1,"create_time":-1},{"name":"index_diary_comment_to_user_uid"});
 db.wct_diary_comment.createIndex({"creator_uid":1,"diary_uid":1},{"name":"index_diary_comment_creator_uid"});
 db.wct_diary_comment.createIndex({"diary_uid":1,"comment_type":1,"create_time":-1},{"name":"index_diary_comment_diary_uid"});
-
-db.createCollection("wct_diary_media");
 db.wct_diary_media.createIndex({"diary_uid":1,"school_id":1},{"name":"index_diary_media_uid"});
-db.createCollection("wct_notify_media");
 db.wct_notify_media.createIndex({"notify_uid":1},{"name":"index_notify_media"}); 
+
+
+
+
+use zxyab_school_ext_1000;
+db.wct_diary_comment.createIndex({"to_user_uid":1,"create_time":-1},{"name":"index_diary_comment_to_user_uid"});
+db.wct_diary_comment.createIndex({"creator_uid":1,"diary_uid":1},{"name":"index_diary_comment_creator_uid"});
+db.wct_diary_comment.createIndex({"diary_uid":1,"comment_type":1,"create_time":-1},{"name":"index_diary_comment_diary_uid"});

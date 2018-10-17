@@ -29,6 +29,44 @@ git checkout -- file
 git rm file_name
 git commit -m
 
+10.查看远程仓库
+git remote -v
+
+eg
+git remote add origin https://github.com/RamonZhao/git.git
+获取远程仓库信息
+ git fetch origin
+
+
+11. git push 使用本地的对应分支来更新对应的远程分支。
+格式 $ git push <远程主机名> <本地分支名>:<远程分支名> 
+eg  $ git push origin master
+上面命令表示，将本地的master分支推送到origin主机的master分支。如果后者不存在，则会被新建。 
+origin是一个远程厂库地址。
+
+如果省略本地分支名，则表示删除指定的远程分支，因为这等同于推送一个空的本地分支到远程分支，这条命令是删除远程master分支。
+$ git push origin :master
+# 等同于
+$ git push origin --delete master
+
+如果当前分支只有一个追踪分支，那么主机名都可以省略。
+$ git push
+
+最后，git push不会推送标签(tag)，除非使用–tags选项。
+$ git push origin --tags
+
+12 git pull 获取并合并其他的厂库，或者本地的其他分支。
+格式 git pull <远程主机> <远程分支>:<本地分支>
+eg git pull origin master:my_test
+上面的命令是将origin厂库的master分支拉取并合并到本地的my_test分支上。
+
+如果省略本地分支，则将自动合并到当前所在分支上。如下：
+git pull origin master
+
+13 . 查看当前分支属性
+git branch -vv 
+git config --lis
+
 git远程仓库管理
   第一步.创建SSH Key.
   ssh-keygen -t rsa -b 4096 -C "314662604@qq.com"

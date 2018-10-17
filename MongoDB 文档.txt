@@ -1,0 +1,138 @@
+mongod -dbpath "D:\MongoDB\data\db" -logpath "D:\MongoDB\data\log\MongoDB.log" -install -serviceName "MongoDB"
+
+启动mongodb服务:NET START MongoDB
+停止mongodb服务:NET STOP MongoDB
+ 进入Mongodb/bin目录输入mongo
+
+show dbs:显示数据库列表 
+show collections：显示当前数据库中的集合（类似关系数据库中的表） 
+show users：显示用户
+
+管理 MongoDB 服务
+启动 MongoDB 服务 命令：net start MongoDB 
+停止 MongoDB 服务 命令：net stop MongoDB 
+删除 MongoDB 服务 命令：
+进入 mongodb bin 目录下  使用命令：mongod --remove 
+可将MongoDB 服务删除
+
+也可以在windows -->设置-->控制面板-->管理工具-->服务  中管理MongoDB 服务
+
+mongo 127.0.0.1:30451
+user admin
+db.createUser({user:"supper",pwd:"PLyG925fQoSRj8WJ",roles:["root"]})
+db.auth("supper","PLyG925fQoSRj8WJ")
+
+
+
+db.createCollection("wct_dynamic_record")
+db.createCollection("wct_diary_comment")
+db.createCollection("wct_diary_media")
+db.createCollection("wct_diary_object")
+db.createCollection("wct_notify_object")
+db.createCollection("wct_notify_media")
+
+db.wct_dynamic_record.dataSize()
+
+db.wct_dynamic_record.insert({
+    "dynamic_uid" : "0009ecf9-fc24-11e7-9256-52540085e817", 
+    "school_id" : "v6n8y8y8klvfmx9",
+    "user_uid" : "0dc0049b-4e14-4d3e-baf6-cac407b17d55",
+    "record_uid" : "64b914a6-f9cc-45a9-a598-d32526c8f0c4",
+    "record_type" : "diary",
+    "record_subclass" : "class",
+    "record_icon" : "111",
+    "record_title" : "2222",
+    "content_category" : "33333",
+    "record_content" : "4444",
+    "link_address" : "5555",
+    "link_desc" : "66666",
+    "is_active" : "7777",
+    "creator_uid" : "8888",
+    "creator" : "9999",
+    "creator_type" : "0000",
+    "create_time" : "11111",
+    "modifier" : "2222",
+    "modifier_type" : "3333",
+    "modify_time" : "4444",
+    "remarks" : "1111"})
+
+db.wct_dynamic_record.find({"dynamic_uid" : "0009ecf9-fc24-11e7-9256-52540085e817"}).pretty()
+
+db.wct_dynamic_record.ensureIndex({"user_uid":1})
+
+bind_ip =0.0.0.0
+
+
+use admin
+db.createUser({user: "root", pwd: "admin", roles:["root"]})
+
+http://115.159.193.60:27017/
+10.105.248.88
+http://10.105.248.88:27017/
+
+http://127.0.0.1:27017/
+
+mongo 115.159.193.60:27017/admin -u root -p admin
+telnet 115.159.193.60 27017
+
+
+db.serverStatus().connections
+
+创建索引
+db.collection.createIndex(keys, options)
+语法中 Key 值为你要创建的索引字段，1 为指定按升序创建索引，如果你想按降序来创建索引指定为 -1 即可。
+eg：db.col.createIndex({"title":1})
+
+
+db.wct_dynamic_record_009.update({'record_uid' : 'b9c9b1c2-0cac-4f41-b089-da7a75cce5f1'},{$set:{'start_date':'2016-03-14','end_date':'2016-03-20'}},{multi:true})
+
+use zxyab_school_ext_1000;
+db.createCollection("wct_dynamic_record_000");
+db.createCollection("wct_dynamic_record_001");
+db.createCollection("wct_dynamic_record_002");
+db.createCollection("wct_dynamic_record_003");
+db.createCollection("wct_dynamic_record_004");
+db.createCollection("wct_dynamic_record_005");
+db.createCollection("wct_dynamic_record_006");
+db.createCollection("wct_dynamic_record_007");
+db.createCollection("wct_dynamic_record_008");
+db.createCollection("wct_dynamic_record_009");
+db.createCollection("wct_diary_comment");
+db.createCollection("wct_diary_media");
+db.createCollection("wct_notify_media");
+use zxyab_school_ext_1000;
+db.wct_dynamic_record_000.createIndex({"user_uid":1,"record_type":1,"create_time":-1},{"name":"idx_dynamic_record_type"});
+db.wct_dynamic_record_001.createIndex({"user_uid":1,"record_type":1,"create_time":-1},{"name":"idx_dynamic_record_type"});
+db.wct_dynamic_record_002.createIndex({"user_uid":1,"record_type":1,"create_time":-1},{"name":"idx_dynamic_record_type"});
+db.wct_dynamic_record_003.createIndex({"user_uid":1,"record_type":1,"create_time":-1},{"name":"idx_dynamic_record_type"});
+db.wct_dynamic_record_004.createIndex({"user_uid":1,"record_type":1,"create_time":-1},{"name":"idx_dynamic_record_type"});
+db.wct_dynamic_record_005.createIndex({"user_uid":1,"record_type":1,"create_time":-1},{"name":"idx_dynamic_record_type"});
+db.wct_dynamic_record_006.createIndex({"user_uid":1,"record_type":1,"create_time":-1},{"name":"idx_dynamic_record_type"});
+db.wct_dynamic_record_007.createIndex({"user_uid":1,"record_type":1,"create_time":-1},{"name":"idx_dynamic_record_type"});
+db.wct_dynamic_record_008.createIndex({"user_uid":1,"record_type":1,"create_time":-1},{"name":"idx_dynamic_record_type"});
+db.wct_dynamic_record_009.createIndex({"user_uid":1,"record_type":1,"create_time":-1},{"name":"idx_dynamic_record_type"});
+
+db.wct_dynamic_record_000.createIndex({"record_uid":1},{"name":"idx_dynamic_record_uid"});
+db.wct_dynamic_record_001.createIndex({"record_uid":1},{"name":"idx_dynamic_record_uid"});
+db.wct_dynamic_record_002.createIndex({"record_uid":1},{"name":"idx_dynamic_record_uid"});
+db.wct_dynamic_record_003.createIndex({"record_uid":1},{"name":"idx_dynamic_record_uid"});
+db.wct_dynamic_record_004.createIndex({"record_uid":1},{"name":"idx_dynamic_record_uid"});
+db.wct_dynamic_record_005.createIndex({"record_uid":1},{"name":"idx_dynamic_record_uid"});
+db.wct_dynamic_record_006.createIndex({"record_uid":1},{"name":"idx_dynamic_record_uid"});
+db.wct_dynamic_record_007.createIndex({"record_uid":1},{"name":"idx_dynamic_record_uid"});
+db.wct_dynamic_record_008.createIndex({"record_uid":1},{"name":"idx_dynamic_record_uid"});
+db.wct_dynamic_record_009.createIndex({"record_uid":1},{"name":"idx_dynamic_record_uid"});
+
+db.wct_diary_comment.createIndex({"to_user_uid":1,"create_time":-1},{"name":"index_diary_comment_to_user_uid"});
+db.wct_diary_comment.createIndex({"creator_uid":1,"diary_uid":1},{"name":"index_diary_comment_creator_uid"});
+db.wct_diary_comment.createIndex({"diary_uid":1,"comment_type":1,"create_time":-1},{"name":"index_diary_comment_diary_uid"});
+db.wct_diary_media.createIndex({"diary_uid":1,"school_id":1},{"name":"index_diary_media_uid"});
+db.wct_notify_media.createIndex({"notify_uid":1},{"name":"index_notify_media"}); 
+
+
+
+
+use zxyab_school_ext_1000;
+db.wct_diary_comment.createIndex({"to_user_uid":1,"create_time":-1},{"name":"index_diary_comment_to_user_uid"});
+db.wct_diary_comment.createIndex({"creator_uid":1,"diary_uid":1},{"name":"index_diary_comment_creator_uid"});
+db.wct_diary_comment.createIndex({"diary_uid":1,"comment_type":1,"create_time":-1},{"name":"index_diary_comment_diary_uid"});

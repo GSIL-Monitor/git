@@ -1,0 +1,48 @@
+SELECT * from zxyab_center_data.wcc_sys_school_xyab where school_id='e2ohl7mjtbaat1y';
+
+SELECT * from zxyab_center_data.wcc_school_dept_class_assign
+where school_id='e2ohl7mjtbaat1y' and dept_id like 'xkvy%';
+
+update zxyab_school_ext_1028.wct_org_school_dept 
+set full_dept_name='',is_active='Y',dept_status='',dept_status_time=''
+where school_id='e2ohl7mjtbaat1y' and dept_id like 'xkvy%';
+
+update zxyab_center_data.wcc_school_dept_class_assign 
+set full_dept_name='',is_active='Y',dept_status='',dept_status_time=''
+where school_id='e2ohl7mjtbaat1y' and dept_id like 'xkvy%';
+
+
+SELECT * from zxyab_school_ext_1028.wct_student_info_history 
+where school_id='e2ohl7mjtbaat1y' and dept_id like 'xkvy%' and oper_method='graduation';
+
+
+INSERT INTO `zxyab_school_ext_1028`.`wct_student_info` (`stu_uid`, `school_id`, `stu_account_id`, `password`, `dept_id`, `stu_name`, `stu_voice_play_name`, `msisdn`, `stu_code`, `stu_unique_code`, `sex`, `stu_type`, `stu_national`, `job_title`, `stu_political`, `head_photo_image`, `head_photo_icon`, `id_card_type_code`, `id_card`, `birthday`, `health`, `home_town`, `address`, `post`, `e_mail`, `stu_interest`, `in_year`, `contact_person`, `contact_phone`, `last_login_time`, `last_bind_time`, `ex_info_01`, `ex_info_02`, `ex_info_03`, `ex_info_04`, `ex_info_05`, `ex_info_06`, `ex_info_07`, `ex_info_08`, `ex_info_09`, `ex_info_10`, `create_time`, `creator`, `modify_time`, `remarks`) 
+select 
+`stu_uid`, `school_id`, `stu_account_id`, `password`, `dept_id`, `stu_name`, `stu_voice_play_name`, `msisdn`, `stu_code`, `stu_unique_code`, `sex`, `stu_type`, `stu_national`, `job_title`, `stu_political`, `head_photo_image`, `head_photo_icon`, `id_card_type_code`, `id_card`, `birthday`, `health`, `home_town`, `address`, `post`, `e_mail`, `stu_interest`, `in_year`, `contact_person`, `contact_phone`, `last_login_time`, `last_bind_time`, `ex_info_01`, `ex_info_02`, `ex_info_03`, `ex_info_04`, `ex_info_05`, `ex_info_06`, `ex_info_07`, `ex_info_08`, `ex_info_09`, `ex_info_10`, `create_time`, `creator`, `modify_time`, `remarks`
+from `zxyab_school_ext_1028`.`wct_student_info_history`
+where school_id='e2ohl7mjtbaat1y' and dept_id like 'xkvy%' and oper_method='graduation';
+
+DELETE from `zxyab_school_ext_1028`.`wct_student_info_history`
+where school_id='e2ohl7mjtbaat1y' and dept_id like 'xkvy%' and oper_method='graduation';
+ 
+
+INSERT INTO `zxyab_center_data`.`wcc_student_school_assign` (`stu_uid`, `school_id`, `stu_account_id`, `password`, `dept_id`, `stu_name`, `stu_voice_play_name`, `msisdn`, `stu_code`, `stu_unique_code`, `sex`, `stu_type`, `stu_national`, `job_title`, `stu_political`, `head_photo_image`, `head_photo_icon`, `id_card_type_code`, `id_card`, `birthday`, `health`, `home_town`, `address`, `post`, `e_mail`, `stu_interest`, `in_year`, `contact_person`, `contact_phone`, `last_login_time`, `last_bind_time`, `ex_info_01`, `ex_info_02`, `ex_info_03`, `ex_info_04`, `ex_info_05`, `ex_info_06`, `ex_info_07`, `ex_info_08`, `ex_info_09`, `ex_info_10`, `create_time`, `creator`, `modify_time`, `remarks`) 
+select 
+`stu_uid`, `school_id`, `stu_account_id`, `password`, `dept_id`, `stu_name`, `stu_voice_play_name`, `msisdn`, `stu_code`, `stu_unique_code`, `sex`, `stu_type`, `stu_national`, `job_title`, `stu_political`, `head_photo_image`, `head_photo_icon`, `id_card_type_code`, `id_card`, `birthday`, `health`, `home_town`, `address`, `post`, `e_mail`, `stu_interest`, `in_year`, `contact_person`, `contact_phone`, `last_login_time`, `last_bind_time`, `ex_info_01`, `ex_info_02`, `ex_info_03`, `ex_info_04`, `ex_info_05`, `ex_info_06`, `ex_info_07`, `ex_info_08`, `ex_info_09`, `ex_info_10`, `create_time`, `creator`, `modify_time`, `remarks`
+from `zxyab_center_data`.`wcc_student_school_history_assign`
+where school_id='e2ohl7mjtbaat1y' and dept_id like 'xkvy%' and oper_method='graduation';
+
+DELETE from `zxyab_center_data`.`wcc_student_school_history_assign`
+where school_id='e2ohl7mjtbaat1y' and dept_id like 'xkvy%' and oper_method='graduation';
+
+SELECT a.* from zxyab_center_data.wcc_card_pool_log a
+join `zxyab_center_data`.`wcc_student_school_assign` b on a.old_stu_uid= b.stu_uid
+where a.operate_code='GraduationFromSchool' and b.school_id='e2ohl7mjtbaat1y' and b.dept_id like 'xkvy%'
+
+-- 卡数据恢复数据
+
+    update wcc_card_pool a 
+    join wcc_card_pool_log b on a.card_no = b.card_no
+    join zxyab_school_ext_1019.wct_student_info c on b.old_stu_uid =c.stu_uid 
+    set a.stu_uid = b.old_stu_uid, a.stu_name = b.old_stu_name,a.parent_uid = b.old_parent_uid,a.parent_name= b.old_parent_name,a.bind_status=b.old_bind_status,a.bind_time=b.old_bind_time
+    where c.dept_id='eidnjzyx' and b.card_no = '8834053044'

@@ -83,8 +83,14 @@ db.collection.createIndex(keys, options)
 语法中 Key 值为你要创建的索引字段，1 为指定按升序创建索引，如果你想按降序来创建索引指定为 -1 即可。
 eg：db.col.createIndex({"title":1})
 
+SELECT * from wct_dynamic_record_007 where school_id='Sf665ce40e29b24' and LENGTH(start_date)>0 and LENGTH(start_date)<10
+GROUP BY record_uid;
 
-db.wct_dynamic_record_009.update({'record_uid' : 'b9c9b1c2-0cac-4f41-b089-da7a75cce5f1'},{$set:{'start_date':'2016-03-14','end_date':'2016-03-20'}},{multi:true})
+UPDATE wct_dynamic_record_007 set start_date='2018-09-24',end_date='2018-09-30' 
+where record_uid = '94f926ac-437c-4ee4-9673-bfb4d9f5a0d8';
+
+
+db.wct_dynamic_record_007.update({'record_uid' : '94f926ac-437c-4ee4-9673-bfb4d9f5a0d8'},{$set:{'start_date':'2018-09-24','end_date':'2018-09-30'}},{multi:true})
 
 use zxyab_school_ext_1000;
 db.createCollection("wct_dynamic_record_000");

@@ -1,0 +1,44 @@
+    //比较理想的动态加载下拉列表数据方法
+    var arr = {}
+    function InitSchoolList(obj) {
+        //获取数据
+        var $pushSchoolId = $("#ddlbPushSchoolId");
+        $pushSchoolId.empty();
+        var appId = $("#ddlbMp").val(); //1
+        if (arr[appId]) {
+            arr[appId].map(function (i, e) {
+               $pushSchoolId.append("<option value='" + i.SchoolId + "'>" + i.SchoolName + "</option>");
+            });
+            if (arr[appId].length) {
+                $pushSchoolId.val(arr[appId][0].SchoolId).select2();
+            } else {
+                $pushSchoolId.val(null).select2();
+            }
+
+        } else {
+            $.ajax({
+                url: "weixin_message_push.aspx?action=SchoolList",
+                type: "post",
+                data: { appId: appId },
+                dataType: "json",
+                success: function (result) {
+                    if (result.data) {
+                        arr[appId] = result.data;
+                    }
+                    $(result.data).each(function (i, e) {
+                        $pushSchoolId.append("<option value='" + e.SchoolId + "'>" + e.SchoolName + "</option>");
+                    });
+                    if (obj) {
+                        $pushSchoolId.val(obj).select2();
+                    } else if (result.data.length) {
+                        $pushSchoolId.val(result.data[0].SchoolId).select2();
+                    } else {
+                        $pushSchoolId.val(null).select2();
+                    }
+                },
+                error: function () {
+
+                }
+            });
+        }
+    }

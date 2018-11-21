@@ -1,20 +1,19 @@
 -- 成长档案建立后换班更新班级信息数据
-update    zxyab_school_ext_1013.wct_growup_record a join 
-zxyab_school_ext_1013.wct_student_info b on a.stu_uid =b.stu_uid  join 
-zxyab_school_ext_1013.wct_org_school_dept c on b.dept_id=c.dept_id and b.school_id = b.school_id 
+update    zxyab_school_ext_1005.wct_growup_record a join 
+zxyab_school_ext_1005.wct_student_info b on a.stu_uid =b.stu_uid  join 
+zxyab_school_ext_1005.wct_org_school_dept c on b.dept_id=c.dept_id and b.school_id = b.school_id 
 set a.dept_id = b.dept_id,a.dept_name = c.dept_name
-where a.stu_uid ='27fd2bef-6fc2-40fb-8c6a-69c9f831536c';
+where a.stu_uid ='f8487c91-ac2e-11e8-8e7e-52540085e817';
 
 
 -- 成长档案更新档案未完成档案显示已完成的错误数据。
 update zxyab_school_ext_1005.wct_growup_record a
 join zxyab_school_ext_1005.wct_growup_page_instance b on a.record_uid = b.growup_record_uid and a.is_finish='Y' and b.is_finish='N'
-set a.is_finish = 'N'
-where a.leader_template_uid='d738e947-8a83-4572-8d65-fc3fc57f8351';
+set a.is_finish = 'N';
 
-updaet from zxyab_school_ext_1005.wct_growup_record 
+update zxyab_school_ext_1005.wct_growup_record 
 set pdffile_url='',microfilm_url=''
-where leader_template_uid='d738e947-8a83-4572-8d65-fc3fc57f8351' and is_finish='N' and (pdffile_url<>'' or microfilm_url<>'');
+where is_finish='N' and (pdffile_url<>'' or microfilm_url<>'');
 
 --成长档案wct_growup_page_instance的role_type 为none 数据修复
 update  zxyab_school_ext_1031.wct_growup_page_instance a join 

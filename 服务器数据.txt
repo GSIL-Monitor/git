@@ -3,3 +3,8 @@
 内网IP	10.105.47.210
 U:Administrator
 P:Evymszux1kjLJ7Un
+
+班牌WEB服务器
+118.25.94.181 (公) 
+administrator 
+FEZXcMvDzoSFnKd;

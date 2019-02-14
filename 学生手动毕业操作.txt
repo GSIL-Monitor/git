@@ -1,0 +1,32 @@
+INSERT INTO `zxyab_school_ext_1010`.`wct_student_info_history` (`history_uid`, `stu_uid`, `school_id`, `stu_account_id`, `password`, `dept_id`, `stu_name`, `stu_voice_play_name`, `msisdn`, `stu_code`, `stu_unique_code`, `sex`, `stu_type`, `stu_national`, `job_title`, `stu_political`, `head_photo_image`, `head_photo_icon`, `id_card_type_code`, `id_card`, `birthday`, `health`, `home_town`, `address`, `post`, `e_mail`, `stu_interest`, `in_year`, `contact_person`, `contact_phone`, `last_login_time`, `last_bind_time`, `ex_info_01`, `ex_info_02`, `ex_info_03`, `ex_info_04`, `ex_info_05`, `ex_info_06`, `ex_info_07`, `ex_info_08`, `ex_info_09`, `ex_info_10`, `create_time`, `creator`, `modify_time`, `remarks`, `oper_src`, `oper_method`, `oper_staff_id`, `oper_ip`, `oper_time`, `oper_desc`, `oper_ext_01`, `oper_ext_02`, `oper_ext_03`, `oper_ext_04`)
+SELECT UUID(),`stu_uid`, `school_id`, `stu_account_id`, `password`, `dept_id`, `stu_name`, `stu_voice_play_name`, `msisdn`, `stu_code`, `stu_unique_code`, `sex`, `stu_type`, `stu_national`, `job_title`, `stu_political`, `head_photo_image`, `head_photo_icon`, `id_card_type_code`, `id_card`, `birthday`, `health`, `home_town`, `address`, `post`, `e_mail`, `stu_interest`, `in_year`, `contact_person`, `contact_phone`, `last_login_time`, `last_bind_time`, `ex_info_01`, `ex_info_02`, `ex_info_03`, `ex_info_04`, `ex_info_05`, `ex_info_06`, `ex_info_07`, `ex_info_08`, `ex_info_09`, `ex_info_10`, `create_time`, `creator`, `modify_time`, `remarks`,'sch_admin','graduation','13556013244','','2018-08-25 16:04:19','毕业','(手动毕业byzhaoby20181203)','','',''
+from `zxyab_school_ext_1010`.`wct_student_info` where dept_id in 
+('hm8mc2bi',
+'hm8mjnh8',
+'hm8mnkal') and school_id ='S993b45aa9e53ec';
+
+DELETE from `zxyab_school_ext_1010`.`wct_student_info` where dept_id in 
+('hm8mc2bi',
+'hm8mjnh8',
+'hm8mnkal') and school_id ='S993b45aa9e53ec';
+
+INSERT INTO wcc_student_school_history_assign (`history_uid`, `stu_uid`, `school_id`, `stu_account_id`, `password`, `dept_id`, `stu_name`, `stu_voice_play_name`, `msisdn`, `stu_code`, `stu_unique_code`, `sex`, `stu_type`, `stu_national`, `job_title`, `stu_political`, `head_photo_image`, `head_photo_icon`, `id_card_type_code`, `id_card`, `birthday`, `health`, `home_town`, `address`, `post`, `e_mail`, `stu_interest`, `in_year`, `contact_person`, `contact_phone`, `last_login_time`, `last_bind_time`, `ex_info_01`, `ex_info_02`, `ex_info_03`, `ex_info_04`, `ex_info_05`, `ex_info_06`, `ex_info_07`, `ex_info_08`, `ex_info_09`, `ex_info_10`, `create_time`, `creator`, `modify_time`, `remarks`, `oper_src`, `oper_method`, `oper_staff_id`, `oper_ip`, `oper_time`, `oper_desc`, `oper_ext_01`, `oper_ext_02`, `oper_ext_03`, `oper_ext_04`)
+SELECT UUID(),`stu_uid`, `school_id`, `stu_account_id`, `password`, `dept_id`, `stu_name`, `stu_voice_play_name`, `msisdn`, `stu_code`, `stu_unique_code`, `sex`, `stu_type`, `stu_national`, `job_title`, `stu_political`, `head_photo_image`, `head_photo_icon`, `id_card_type_code`, `id_card`, `birthday`, `health`, `home_town`, `address`, `post`, `e_mail`, `stu_interest`, `in_year`, `contact_person`, `contact_phone`, `last_login_time`, `last_bind_time`, `ex_info_01`, `ex_info_02`, `ex_info_03`, `ex_info_04`, `ex_info_05`, `ex_info_06`, `ex_info_07`, `ex_info_08`, `ex_info_09`, `ex_info_10`, `create_time`, `creator`, `modify_time`, `remarks`,'sch_admin','graduation','13556013244','','2018-08-25 16:04:19','毕业','(手动毕业byzhaoby20181203)','','',''
+from wcc_student_school_assign where dept_id in 
+('hm8mc2bi',
+'hm8mjnh8',
+'hm8mnkal')and school_id ='S993b45aa9e53ec';
+
+DELETE from wcc_student_school_assign where dept_id in 
+('hm8mc2bi',
+'hm8mjnh8',
+'hm8mnkal') and school_id ='S993b45aa9e53ec';
+
+update wcc_card_pool set is_active='N',
+remarks=CONCAT(remarks,'手动毕业处理zhaoby')
+ where stu_uid in (
+SELECT stu_uid from wcc_student_school_history_assign where dept_id in 
+('hm8mc2bi',
+'hm8mjnh8',
+'hm8mnkal') and school_id ='S993b45aa9e53ec');
+

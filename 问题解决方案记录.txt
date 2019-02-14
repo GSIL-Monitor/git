@@ -7,9 +7,29 @@ where a.stu_uid ='f8487c91-ac2e-11e8-8e7e-52540085e817';
 
 
 -- 成长档案更新档案未完成档案显示已完成的错误数据。
-update zxyab_school_ext_1005.wct_growup_record a
-join zxyab_school_ext_1005.wct_growup_page_instance b on a.record_uid = b.growup_record_uid and a.is_finish='Y' and b.is_finish='N'
+update zxyab_school_ext_1032.wct_growup_record a
+join zxyab_school_ext_1032.wct_growup_page_instance b on a.record_uid = b.growup_record_uid and a.is_finish='Y' and b.is_finish='N'
 set a.is_finish = 'N';
+
+SELECT a.* from wct_growup_record a join 
+  (
+		SELECT count(case when is_finish='N' then record_uid else null end ) b,growup_record_uid from wct_growup_page_instance where record_uid !='' and school_id='es3wj3d97evwpol' group by growup_record_uid
+) c on a.record_uid = c.growup_record_uid 
+ where c.b = 0 and a.is_finish = 'N'
+
+
+SELECT a.* from  zxyab_school_ext_1032.wct_growup_page_instance a 
+left join (
+	SELECT page_instance_uid,count(case when desc_content!='' then desc_content else null end ) pcount from zxyab_school_ext_1032.wct_growup_page_desc_instance GROUP BY page_instance_uid
+) b on a.page_instance_uid = b.page_instance_uid 
+left join (
+	SELECT page_instance_uid, count(*) icount from zxyab_school_ext_1032.wct_growup_photo_instance GROUP BY page_instance_uid
+) c on a.page_instance_uid = c.page_instance_uid
+join (
+	SELECT layout_uid, count(case when container_style='text_container' or container_style='image_container' then container_style else null end ) acount from zxyab_center_data.wcc_growup_layout_xyab GROUP BY layout_uid
+) d on a.template_style_text = d.layout_uid
+where  a.is_finish='Y' and a.record_uid!='' 
+and (IF(ISNULL(b.pcount),0,b.pcount)+IF(ISNULL(c.icount),0,c.icount))<IF(ISNULL(d.acount),0,d.acount)  
 
 update zxyab_school_ext_1005.wct_growup_record 
 set pdffile_url='',microfilm_url=''
@@ -20,3 +40,9 @@ update  zxyab_school_ext_1031.wct_growup_page_instance a join
 zxyab_school_ext_1031.wct_growup_page_instance b on a.subject_name = b.subject_name and a.record_uid=b.record_uid and a.list_order= b.list_order
 set a.role_type = b.role_type
 where  a.role_type='none' and a.is_active='Y' and b.is_active='Y' and b.growup_record_uid=''
+
+--- 群发功能测试SQL
+SELECT * from zxyab_center_data.weix_mp_message_object where message_uid = '0b266d36-9d94-4b38-b3f2-f63bfec2f6e4' 
+SELECT * from zxyab_center_data.weix_mp_message ORDER BY create_time desc;
+
+SELECT * from zxyab_center_data.wcc_wx_message_history where business_uid = '0b266d36-9d94-4b38-b3f2-f63bfec2f6e4' ;

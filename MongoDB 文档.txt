@@ -22,6 +22,18 @@ user admin
 db.createUser({user:"supper",pwd:"PLyG925fQoSRj8WJ",roles:["root"]})
 db.auth("supper","PLyG925fQoSRj8WJ")
 
+db.revokeRolesFromUser("supper",[{role:"root", db:"testDB"}])  
+
+db.removeUser("shuobao")
+db.createUser({user:"shuobao",pwd:"PLyG925fQoSRj8WJ",roles:[{role:"dbOwner",db:"shuobao4paas"}]})
+show users
+更新用户信息
+db.updateUser("shuobao",{roles:[{role:"dbOwner",db:"shuobao"}],pwd:"PLyG925fQoSRj8WJ"})
+
+
+db.changeUserPassword("zxyab","SJ3xxdqTDkS9EqEw")
+db.changeUserPassword("zxyab","SJ3xxdqTDkS9EqEw")
+db.changeUserPassword("zxyab","SJ3xxdqTDkS9EqEw")
 
 
 db.createCollection("wct_dynamic_record")
@@ -61,10 +73,6 @@ db.wct_dynamic_record.find({"dynamic_uid" : "0009ecf9-fc24-11e7-9256-52540085e81
 db.wct_dynamic_record.ensureIndex({"user_uid":1})
 
 bind_ip =0.0.0.0
-
-
-use admin
-db.createUser({user: "root", pwd: "admin", roles:["root"]})
 
 http://115.159.193.60:27017/
 10.105.248.88

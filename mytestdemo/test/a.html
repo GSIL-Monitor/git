@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="showb" class="showdiv"></div>
+    <div id="showc" class="showdiv"></div>
+    <div onclick="changeTab('b')" style="display:flex;"> b</div><div onclick="changeTab('c')" style="display:flex;">c</div>
+</body>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<script>
+    $(function () {
+        var tab = "b";
+        changeTab(tab);
+
+    });
+
+    function changeTab(tab)
+    {
+        $.ajax({
+            type: "get",
+            url: tab+".html",
+            dataType: 'html',
+            success: function (data) {
+                $(".showdiv").hide();
+                $("#show"+tab).show();
+                if($("#show"+tab).html()=="")
+                {
+                    $("#show"+tab).append(data);
+                }
+            },
+            error: function () {
+
+            }
+        });
+    }
+</script>
+
+</html>

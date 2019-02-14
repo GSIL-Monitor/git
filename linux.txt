@@ -1,0 +1,62 @@
+[zhaobiyu@localhost Desktop]$ df -hl
+Filesystem               Size  Used Avail Use% Mounted on
+/dev/mapper/centos-root   28G  3.6G   24G  13% /
+devtmpfs                 481M     0  481M   0% /dev
+tmpfs                    490M  560K  490M   1% /dev/shm
+tmpfs                    490M  7.1M  483M   2% /run
+tmpfs                    490M     0  490M   0% /sys/fs/cgroup
+/dev/sda1                497M  119M  379M  24% /boot
+/dev/sdb1               1T 990G  379M  1% /apps
+
+ ps -ef|grep tomcat
+
+# 显示所有变量
+env
+
+shell 脚本基础
+1.文件名称格式: xxx.sh
+2.文件内容的第一行: #!/bin/bash
+3.命令全部融合在一起
+
+shell 学习
+https://www.cnblogs.com/chengd/p/7803664.html
+
+网络配置的目录
+/etc/sysconfig/network-scripts/
+
+修改 这个文件
+/etc/sysconfig/network
+
+BOOTPROTO=static
+IPADDR=192.168.72.128
+NETMASK=255.255.255.0
+GATEWAY=192.168.72.2
+
+https://www.sonatype.com/download-oss-sonatype
+
+https://about.gitlab.com/
+
+vmware sftp 使用规则
+https://www.cnblogs.com/xwdreamer/p/3673397.html
+
+docker 
+
+rpm -ivh jdk-8u201-linux-x64.rpm
+
+hexo
+
+linux 服务器下面执行 mvn clean test deploy
+
+
+karma+webpack搭建vue单元测试环境
+
+ setsebool -P httpd_can_network_connect on
+
+ dnsmasq
+
+ nginx  keepalived
+
+
+ kubermeters
+
+ 为什么Nginx的性能要比Apache高得多？这得益于Nginx使用了最新的epoll（Linux 2.6内核）和kqueue（freebsd）网络I/O模型，而Apache则使用的是传统的select模型。目前Linux下能够承受高并发访问的Squid、Memcached都采用的是epoll网络I/O模型。

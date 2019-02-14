@@ -1,0 +1,84 @@
+代理账号：biyu:YsrhtD45uL4m7DGg
+
+mongdb的IP地址和端口号
+外网地址： 47.105.116.99
+内网地址： 172.31.176.246
+端口：30451
+mongodb 账号：shuobao 密码为：PLyG925fQoSRj8WJ
+域名
+teacher.shuobaotiandi.com
+parent.shuobaotiandi.com
+
+阿里云
+https://www.aliyun.com/?utm_content=se_1000301881
+硕石科技有限公司   gst123456
+
+新注册了两个微信服务号，硕宝阅享和硕果阅享，分别对应借阅系统的家长端和老师端。
+硕宝阅享账号是dashuoguo@163.com，密码是shuoshi123
+硕果阅享账号是dashuoguo@126.com，密码是shuoshi123
+
+服务器 47.105.116.99
+账号 root
+密码 GSTgst123456
+
+ip：47.92.37.213
+账户：root
+密码：dxby@123456
+
+老师端
+https://free.modao.cc/app/nCbZ1wWurOLGkgmSpymh4nhWHDoTLl2?via=qrcode#screen=sEE9C28EE611544147765713
+园长端
+https://free.modao.cc/app/7UaKrp34nGLcHyRaB7EJLOaaxR9BUig?via=qrcode#screen=s44D6CEF0231544521745143
+家长端 
+https://free.modao.cc/app/4zf8zK3IsQkqmjOP2bloySNEwYm7LNj?via=qrcode#screen=s9212735DCD1543992773928
+
+http://digitell.cn/showdoc/index.php?s=/1&page_id=1
+
+命令 
+cd /app/tomcat/webapps/shuobaoWeb
+svn update
+
+
+http://www.wemeeting.cn/showdoc-master/web/#/1?page_id=46
+showdoc学习地址
+http://digitell.cn/showdoc/index.php?s=/1&page_id=1
+-ccn.shuobao.paas.teacher.schooldata.service.impl.NotifyRecordServiceImpl -fD:\Sigbit\Project\shuobao4paas\ExtractHubSQL.properties
+
+ps -ef|grep java
+kill -9 端口号
+
+消息队列的账号密码 
+http://47.105.116.99:15672/
+shuobao  shuobao@2018
+配置环境变量
+MQ_HOST_LIST_ENV： 47.105.116.99:15672
+MQ_USER_NAME:shuobao
+MQ_PASS_WORD:shuobao@2018
+// 配置环境变量：host:port;host:port
+
+window 设置java属性
+如 java -DMQ_USER_NAME=xxx 
+
+打包可执行jar包
+https://www.cnblogs.com/blog5277/p/5920560.html
+
+java -classpath ****.jar ****.****.className [args]
+
+java -cp mplus-service-jar-with-dependencies.jar com.smbea.dubbo.bin.Console aaa bbb
+
+总结：通过maven 把项目打包成jar，然后运行main方法，有两种情况，一种是在MANIFEST.MF中指定运行的main方法；另外一种是通过命令行指定运行的main方法的包；同时可以添加对应的参数传递到main方法中去；
+
+
+提交代码gerrit触发jenkins自动构建，构建成功，其他人才能review并merge代码到git库
+
+
+ExtractHubSQL -ccn.shuobao.paas.teacher.schooldata.service.impl.NotifyRecordServiceImpl
+
+
+http://parent.shuobaotiandi.com/shuobaoWeb/parentWeb/page/bind/bind.html?appuserUid=679807de-96fd-4447-9041-c83ce0641f50
+http://teacher.shuobaotiandi.com/shuobaoWeb/teacherWeb/page/bind/bind.html?appuserUid=49b5af06-4f8c-4174-bfe8-e56de6da8774
+
+http://teacher.shuobaotiandi.com/shuobaoWeb/teacherWeb/page/bind/bind.html?appuserUid=%20javascript:alert('XSS')
+
+lombok
+jenkins
